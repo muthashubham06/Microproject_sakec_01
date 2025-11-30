@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>SkillProject | Simple Sign Up</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    /* Basic page style */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f3f5fb;
+    }
+
+    /* SkillProject header bar (no navigation) */
+    header {
+      background: linear-gradient(90deg, #005bbb, #003f7d);
+      color: white;
+      text-align: center;
+      padding: 16px 10px;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 26px;
+    }
+    header p {
+      margin: 4px 0 0;
+      font-size: 14px;
+      opacity: 0.95;
+    }
+
+    /* Centered signup box */
+    .wrapper {
+      max-width: 400px;
+      margin: 30px auto;
+      background: white;
+      padding: 20px 18px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .wrapper h2 {
+      text-align: center;
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+
+    .field {
+      margin-bottom: 12px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 4px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px 10px;
+      font-size: 14px;
+      border-radius: 6px;
+      border: 1px solid #ccd4e0;
+      box-sizing: border-box;
+    }
+
+    input:focus {
+      border-color: #2b7cff;
+      outline: none;
+    }
+
+    .hint {
+      font-size: 12px;
+      color: #666;
+      margin-top: 4px;
+    }
+
+    .error {
+      font-size: 13px;
+      color: #d9534f;
+      margin-top: 4px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      font-size: 15px;
+      font-weight: bold;
+      border-radius: 6px;
+      border: none;
+      background: #2b7cff;
+      color: white;
+      cursor: pointer;
+      margin-top: 6px;
+    }
+
+    button:hover {
+      background: #1f5fd1;
+    }
+
+    .note {
+      margin-top: 10px;
+      font-size: 12px;
+      color: #555;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SkillProject top bar -->
+  <header>
+    <h1>SkillProject</h1>
+    <p>Quality, skill-based learning — practical courses for every student</p>
+  </header>
+
+  <!-- Simple signup form -->
+  <div class="wrapper">
+    <h2>Sign Up</h2>
+    <form id="signupForm">
+      <!-- Full name -->
+      <div class="field">
+        <label for="name">Full name</label>
+        <input type="text" id="name" placeholder="Your full name" required />
+      </div>
+
+      <!-- Email -->
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="you@example.com" required />
+      </div>
+
+      <!-- Password -->
+      <div class="field">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="At least 8 characters" required />
+        <div class="hint">Password should be at least 8 characters long.</div>
+      </div>
+
+      <!-- Confirm password -->
+      <div class="field">
+        <label for="confirm">Confirm password</label>
+        <input type="password" id="confirm" placeholder="Re-type password" required />
+      </div>
+
+      <!-- Error message area -->
+      <div id="errorMsg" class="error"></div>
+
+      <!-- Submit button -->
+      <button type="submit">Create account</button>
+    </form>
+
+      </div>
+
+  <script>
+    // Get form and fields
+    const form = document.getElementById("signupForm");
+    const nameInput = document.getElementById("name");
+    const emailInput = document.getElementById("email");
+    const passwordInput = document.getElementById("password");
+    const confirmInput = document.getElementById("confirm");
+    const errorMsg = document.getElementById("errorMsg");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault(); // stop normal form submit
+
+      // Clear previous error message
+      errorMsg.textContent = "";
+
+      const name = nameInput.value.trim();
+      const email = emailInput.value.trim();
+      const password = passwordInput.value;
+      const confirm = confirmInput.value;
+
+      // Very simple checks for beginners
+      if (!name || !email || !password || !confirm) {
+        errorMsg.textContent = "Please fill in all fields.";
+        return;
+      }
+
+      if (password.length < 8) {
+        errorMsg.textContent = "Password must be at least 8 characters long.";
+        return;
+      }
+
+      if (password !== confirm) {
+        errorMsg.textContent = "Passwords do not match.";
+        return;
+      }
+
+      // If everything is okay
+      alert("Your account is successfully generated");
+
+      // After 3 seconds, go to another page
+      // Change "index.html" to any page you want
+      setTimeout(function () {
+        window.location.href = "microhome.html";
+      }, 1500);
+    });
+  </script>
+
+</body>
+</html>
